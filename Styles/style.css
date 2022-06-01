@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Cardo', serif;
+    text-align: center;
+}
+
+.fondo1{
+    background-color: #F4F0E4;
+}
+
+.fondo2{
+    background-color: #134A37;
+}
+
+.fondo3{
+    background-color: #E1EEDD;
+}
+
+.img-responsive1{
+    max-width: 100%;
+    height: 150px;
+}
+
+.img-responsive2{
+    width: 400px;
+    height: 200px;
+}
+
+header div div p{
+    display: inline;
+}
+
+header div div i{
+    display: inline;
+}
+
+main div div img{
+    padding-bottom: 10px;
+}
+
+.links-sin-formato{
+    text-decoration: none;
+    color: black;
+}
+
+.agrandar-iconos{
+    font-size: 200%;
+}
+
+.grid-main-nuestrosservicios{
+    background-color: #F4F0E4;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 150px);
+    grid-template-areas: "ser1"
+                         "ser2"
+                         "ser3"
+    ;
+}
+
+.ser1{
+    text-align: center;
+    background-image:url(../Images/eventos.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.ser2{
+    text-align: center;
+    background-image: url(../Images/capacitaciones.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.ser3{
+    text-align: center;
+    background-image: url(../Images/regalos.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:10px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.map-container{
+    overflow:hidden;
+    padding: 10px;
+    position: relative;
+    height:0;
+    margin: 10px;
+}
+
+.map-container iframe{
+    left:0;
+    top:0;
+    height:200px;
+    width:100%;
+    position:absolute;
+}
+
+span{
+    font-weight: bolder;
+    font-size: large;
+}
