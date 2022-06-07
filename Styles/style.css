@@ -116,9 +116,9 @@ span{
 
 main div div img{
     transition-duration: 2s;
-    }
-    
-    main div div img:hover{
-        width: 50%;
-        height: 50%;
-    }
+}
+
+main div div img:hover{
+    width: 50%;
+    height: 50%;
+}

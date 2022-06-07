@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Cardo", serif;
+    text-align: center;
+}
+
+.fondo1 {
+    background-color: #F4F0E4;
+}
+
+.fondo2 {
+    background-color: #134a37;
+}
+
+.fondo3 {
+    background-color: #e1eedd;
+}
+
+.img-responsive1 {
+    max-width: 100%;
+    height: 150px;
+}
+
+.img-responsive2 {
+    width: 400px;
+    height: 200px;
+}
+
+header div div p {
+    display: inline;
+}
+
+header div div i {
+    display: inline;
+}
+
+main div div img {
+    padding-bottom: 10px;
+}
+
+.links-sin-formato {
+    text-decoration: none;
+    color: black;
+}
+
+.agrandar-iconos {
+    font-size: 200%;
+}
+
+span {
+    font-weight: bolder;
+    font-size: large;
+}
+
+/*# sourceMappingURL=style1.css.map */
