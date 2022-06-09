@@ -1,13 +1,14 @@
 $color-primario: #F4F0E4;
 $color-secundario-1: #134a37;
 $color-secundario-2: #e1eedd;
+$alto-img-landing: 700px;
 
 *{
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-font-family: 'Cardo', serif;
-text-align: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Cardo', serif;
+    text-align: center;
 }
 
 .fondo1{
@@ -57,8 +58,20 @@ main{
         div{
             img{
                 padding-bottom: 10px;
+                transition-duration: 2s;
             }
-        }    
+        }
+    }
+}
+
+main{
+    div{
+        div{
+            img:hover{
+                width: 50%;
+                height: 50%;
+            }
+        }
     }
 }
 
@@ -71,7 +84,87 @@ main{
     font-size: 200%;
 }
 
+.grid-main-nuestrosservicios{
+    background-color: $color-primario;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 150px);
+    grid-template-areas: "ser1"
+                         "ser2"
+                         "ser3"
+    ;
+}
+
+.ser1{
+    text-align: center;
+    background-image:url(../Images/eventos.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.ser2{
+    text-align: center;
+    background-image: url(../Images/capacitaciones.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.ser3{
+    text-align: center;
+    background-image: url(../Images/regalos.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin:10px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.map-container{
+    overflow:hidden;
+    padding: 10px;
+    position: relative;
+    height:0;
+    margin: 10px;
+}
+
+.map-container{
+    iframe{
+        left:0;
+        top:0;
+        height:200px;
+        width:100%;
+        position:absolute;
+    }
+} 
+
 span{
     font-weight: bolder;
     font-size: large;
+}
+
+.img-panadería{
+    background-image: url(../Images/s3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: $alto-img-landing;
+}
+
+.img-pastelería{
+    background-image: url(../Images/Cookies.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: $alto-img-landing;
+}
+
+.img-logo-navbar{
+    size: 10px;
 }
