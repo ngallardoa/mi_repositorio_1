@@ -1,0 +1,33 @@
+*Uso de palabras clave*
+
+Se agregaron las siguientes palabras clave a cada una de las páginas del sitio:
+
+# pasteleria
+# panaderia
+# buenos aires
+
+*Uso de descripciones*
+
+Se agregaron las siguientes descripciones:
+
+# index.html - "Bienvenido a la página de inicio de nuestra pastelería"
+# Contacto.html - "Dejá tus datos de contacto con tu consulta"
+# NuestrosProductos.html - "Detalle de los productos que ofrecemos a nuestros clientes"
+# NuestrosServicios.html - "Detalle de los servicios que ofrecemos a nuestros clientes"
+# PuntosDeVenta.html - "Puntos de venta donde podés adquirir nuestros productos"
+# QuienesSomos.html - "Breve descripción de nuestro emprendimiento"
+
+*Uso de títulos*
+
+Se agregaron los siguientes títulos:
+
+# index.html - "Lazaretto Bakery"
+# Contacto.html - "Contacto"
+# NuestrosProductos.html - "Nuestros productos"
+# NuestrosServicios.html - "Nuestros servicios"
+# PuntosDeVenta.html - "Puntos de venta"
+# QuienesSomos.html - "Quiénes somos"
+
+*Modificación de títulos*
+
+Se cambió la jerarquía de los encabezados para mejorar el posicionamiento en el motor de búsqueda.

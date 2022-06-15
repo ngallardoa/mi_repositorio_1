@@ -1,7 +1,9 @@
-$color-primario: #F4F0E4;
-$color-secundario-1: #134a37;
-$color-secundario-2: #e1eedd;
-$alto-img-landing: 700px;
+$estilos-varios:(
+color-primario: #F4F0E4,
+color-secundario-1: #134a37,
+color-secundario-2: #e1eedd,
+alto-img-landing: 800px,
+);
 
 *{
     padding: 0;
@@ -11,16 +13,26 @@ $alto-img-landing: 700px;
     text-align: center;
 }
 
+@mixin img-landing{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@mixin tamaños ($width, $height) {
+    width: $width;
+    height: $height;
+}
+
 .fondo1{
-    background-color: $color-primario;
+    background-color: map-get($estilos-varios, color-primario);
 }
 
 .fondo2{
-    background-color: $color-secundario-1;
+    background-color: map-get($estilos-varios, color-secundario-1);
 }
 
 .fondo3{
-    background-color: $color-secundario-2;
+    background-color: map-get($estilos-varios, color-secundario-2);
 }
 
 .img-responsive1{
@@ -29,8 +41,7 @@ $alto-img-landing: 700px;
 }
 
 .img-responsive2{
-    width: 400px;
-    height: 200px;
+    @include tamaños(300px, 400px);
 }
 
 header{
@@ -68,8 +79,7 @@ main{
     div{
         div{
             img:hover{
-                width: 50%;
-                height: 50%;
+                @include tamaños(50%, 50%);
             }
         }
     }
@@ -85,7 +95,7 @@ main{
 }
 
 .grid-main-nuestrosservicios{
-    background-color: $color-primario;
+    background-color: map-get($estilos-varios, color-primario);
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(3, 150px);
@@ -95,37 +105,29 @@ main{
     ;
 }
 
-.ser1{
+.ser{
     text-align: center;
-    background-image:url(../Images/eventos.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     margin: 10px;
     font-weight: bolder;
     font-size: 20px;
+}
+
+.ser1{
+    @extend .ser;
+    background-image:url(../Images/eventos.jpg);
 }
 
 .ser2{
-    text-align: center;
+    @extend .ser;
     background-image: url(../Images/capacitaciones.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 10px;
-    font-weight: bolder;
-    font-size: 20px;
 }
 
 .ser3{
-    text-align: center;
+    @extend .ser;
     background-image: url(../Images/regalos.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin:10px;
-    font-weight: bolder;
-    font-size: 20px;
 }
 
 .map-container{
@@ -134,14 +136,10 @@ main{
     position: relative;
     height:0;
     margin: 10px;
-}
-
-.map-container{
     iframe{
         left:0;
         top:0;
-        height:200px;
-        width:100%;
+        @include tamaños(100%, 200px);
         position:absolute;
     }
 } 
@@ -153,18 +151,16 @@ span{
 
 .img-panadería{
     background-image: url(../Images/s3.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: $alto-img-landing;
+    @include img-landing;
+    height: map-get($estilos-varios, alto-img-landing);
 }
 
 .img-pastelería{
     background-image: url(../Images/Cookies.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: $alto-img-landing;
+    @include img-landing;
+    height: map-get($estilos-varios, alto-img-landing);
 }
 
 .img-logo-navbar{
-    size: 10px;
+    @include tamaños(40px, 40px);
 }

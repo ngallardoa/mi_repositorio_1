@@ -25,8 +25,8 @@
 }
 
 .img-responsive2 {
-  width: 400px;
-  height: 200px;
+  width: 300px;
+  height: 400px;
 }
 
 header div div p {
@@ -64,37 +64,26 @@ main div div img:hover {
   grid-template-areas: "ser1" "ser2" "ser3";
 }
 
-.ser1 {
+.ser, .ser3, .ser2, .ser1 {
   text-align: center;
-  background-image: url(../Images/eventos.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   margin: 10px;
   font-weight: bolder;
   font-size: 20px;
+}
+
+.ser1 {
+  background-image: url(../Images/eventos.jpg);
 }
 
 .ser2 {
-  text-align: center;
   background-image: url(../Images/capacitaciones.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 10px;
-  font-weight: bolder;
-  font-size: 20px;
 }
 
 .ser3 {
-  text-align: center;
   background-image: url(../Images/regalos.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 10px;
-  font-weight: bolder;
-  font-size: 20px;
 }
 
 .map-container {
@@ -104,12 +93,11 @@ main div div img:hover {
   height: 0;
   margin: 10px;
 }
-
 .map-container iframe {
   left: 0;
   top: 0;
-  height: 200px;
   width: 100%;
+  height: 200px;
   position: absolute;
 }
 
@@ -122,18 +110,19 @@ span {
   background-image: url(../Images/s3.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 700px;
+  height: 800px;
 }
 
 .img-pastelería {
   background-image: url(../Images/Cookies.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 700px;
+  height: 800px;
 }
 
 .img-logo-navbar {
-  size: 10px;
+  width: 40px;
+  height: 40px;
 }
 
 /*# sourceMappingURL=style1.css.map */
