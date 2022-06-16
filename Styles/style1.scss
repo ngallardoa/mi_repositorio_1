@@ -1,3 +1,5 @@
+/*Maps*/
+
 $estilos-varios:(
 color-primario: #F4F0E4,
 color-secundario-1: #134a37,
@@ -5,13 +7,7 @@ color-secundario-2: #e1eedd,
 alto-img-landing: 800px,
 );
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Cardo', serif;
-    text-align: center;
-}
+/*Mixins*/
 
 @mixin img-landing{
     background-size: cover;
@@ -21,6 +17,16 @@ alto-img-landing: 800px,
 @mixin tamaños ($width, $height) {
     width: $width;
     height: $height;
+}
+
+/*Estilos generales*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Cardo', serif;
+    text-align: center;
 }
 
 .fondo1{
@@ -94,6 +100,17 @@ main{
     font-size: 200%;
 }
 
+span{
+    font-weight: bolder;
+    font-size: large;
+}
+
+.img-logo-navbar{
+    @include tamaños(40px, 40px);
+}
+
+/*Estilos de NuestrosServicios.html*/
+
 .grid-main-nuestrosservicios{
     background-color: map-get($estilos-varios, color-primario);
     display: grid;
@@ -130,6 +147,8 @@ main{
     background-image: url(../Images/regalos.jpg);
 }
 
+/*Google Maps*/
+
 .map-container{
     overflow:hidden;
     padding: 10px;
@@ -142,12 +161,9 @@ main{
         @include tamaños(100%, 200px);
         position:absolute;
     }
-} 
-
-span{
-    font-weight: bolder;
-    font-size: large;
 }
+
+/*Estilos de index.html*/
 
 .img-panadería{
     background-image: url(../Images/s3.jpg);
@@ -161,10 +177,3 @@ span{
     height: map-get($estilos-varios, alto-img-landing);
 }
 
-.img-logo-navbar{
-    @include tamaños(40px, 40px);
-}
-
-.main-quienessomos{
-    height: 800px;
-}

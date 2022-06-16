@@ -1,4 +1,7 @@
 @charset "UTF-8";
+/*Maps*/
+/*Mixins*/
+/*Estilos generales*/
 * {
   padding: 0;
   margin: 0;
@@ -56,6 +59,17 @@ main div div img:hover {
   font-size: 200%;
 }
 
+span {
+  font-weight: bolder;
+  font-size: large;
+}
+
+.img-logo-navbar {
+  width: 40px;
+  height: 40px;
+}
+
+/*Estilos de NuestrosServicios.html*/
 .grid-main-nuestrosservicios {
   background-color: #F4F0E4;
   display: grid;
@@ -86,6 +100,7 @@ main div div img:hover {
   background-image: url(../Images/regalos.jpg);
 }
 
+/*Google Maps*/
 .map-container {
   overflow: hidden;
   padding: 10px;
@@ -101,11 +116,7 @@ main div div img:hover {
   position: absolute;
 }
 
-span {
-  font-weight: bolder;
-  font-size: large;
-}
-
+/*Estilos de index.html*/
 .img-panadería {
   background-image: url(../Images/s3.jpg);
   background-size: cover;
@@ -117,15 +128,6 @@ span {
   background-image: url(../Images/Cookies.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 800px;
-}
-
-.img-logo-navbar {
-  width: 40px;
-  height: 40px;
-}
-
-.main-quienessomos {
   height: 800px;
 }
 
