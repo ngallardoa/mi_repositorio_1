@@ -40,12 +40,6 @@ header div div i {
 
 main div div img {
   padding-bottom: 10px;
-  transition-duration: 2s;
-}
-
-main div div img:hover {
-  width: 50%;
-  height: 50%;
 }
 
 .links-sin-formato {
@@ -67,12 +61,109 @@ span {
   height: 40px;
 }
 
+.grid-footer {
+  padding: 5px;
+  background-color: #F4F0E4;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas: "foo1 foo2" "foo1 foo3";
+  justify-content: center;
+}
+
+.foo1 {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  grid-area: foo1;
+  background-image: url(../Images/instagram-brands.svg);
+  padding: 30px;
+  margin: 5px;
+}
+
+.foo2 {
+  grid-area: foo2;
+  font-weight: bolder;
+  font-size: 30px;
+  text-align: left;
+}
+
+.foo3 {
+  grid-area: foo3;
+  font-size: 20px;
+  text-align: left;
+}
+
+.movimiento-iconos {
+  margin: 40px;
+  animation-name: efecto-movimiento-iconos;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.fuente-gris {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 510px) {
+  .movimiento-iconos {
+    margin: 1px;
+    animation: none;
+  }
+}
+@keyframes efecto-movimiento-iconos {
+  0% {
+    margin: 40px;
+  }
+  100% {
+    margin: 3px;
+  }
+}
+@media (max-width: 767px) {
+  #bordes-1 {
+    border-top: rgba(255, 255, 255, 0.55) solid 3px;
+    border-bottom: rgba(255, 255, 255, 0.55) solid 3px;
+    border-left: none;
+    border-right: none;
+  }
+}
+@media (min-width: 766px) {
+  #bordes-1 {
+    border-top: none;
+    border-bottom: none;
+    border-left: rgba(255, 255, 255, 0.55) solid 3px;
+    border-right: rgba(255, 255, 255, 0.55) solid 3px;
+  }
+}
+.agitar-iconos {
+  animation-name: efecto-agitar-iconos;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes efecto-agitar-iconos {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 /*Estilos de NuestrosServicios.html*/
 .grid-main-nuestrosservicios {
   background-color: #F4F0E4;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(3, 150px);
+  grid-template-rows: repeat(3, 250px);
   grid-template-areas: "ser1" "ser2" "ser3";
 }
 
@@ -83,11 +174,11 @@ span {
   background-position: center;
   margin: 10px;
   font-weight: bolder;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .ser1 {
-  background-image: url(../Images/eventos.jpg);
+  background-image: url(../Images/eventos1.jpg);
 }
 
 .ser2 {
@@ -95,7 +186,23 @@ span {
 }
 
 .ser3 {
-  background-image: url(../Images/regalos.jpg);
+  background-image: url(../Images/regalos1.jpg);
+}
+
+/*Estilos de QuienesSomos.html*/
+.som, .som1 {
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-weight: bolder;
+  font-size: 25px;
+  min-height: 700px;
+  width: 100%;
+}
+
+.som1 {
+  background-image: url(../Images/quienessomos3.jpg);
 }
 
 /*Google Maps*/

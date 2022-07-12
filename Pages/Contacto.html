@@ -16,109 +16,166 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-
-    <header>
-        <div class="container-fluid fondo3">
-            <div class="d-inline row">
-                <i class="fa-solid fa-truck-fast d-inline"></i>
-                <p>Envíos gratis para compras mayores a $3000</p>
-                <i class="fa-solid fa-truck-fast d-inline"></i>
+    <header class="container-fluid">
+        <div class="row fondo3">
+            <div class="col-xs-12 col-md-12">
+                <i class="fa-solid fa-truck-fast d-inline movimiento-iconos"></i>
+                <p class="d-inline">Envíos gratis para compras mayores a $3000</p>
+                <i class="fa-solid fa-truck-fast d-inline movimiento-iconos"></i>
             </div>
-            <div class="row fondo1">
-                <div class="col-sm-12">
-                    <a href="../index.html">
-                        <img class="img-responsive1" src="../Images/Logo-01(2).png" alt="Logo">
-                    </a>
+        </div>
+        <div class="row fondo1 justify-content-center">
+            <div class="col-4 col-sm-3 pt-5">
+                <form class="d-flex align-self-center">
+                    <input class="form-control m-2 align-self-center" type="text" placeholder="Buscar">
+                    <button class="btn align-self-center fondo2" type="button">
+                        <i class="fa-solid fa-magnifying-glass fuente-gris"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <a href="./index.html">
+                    <img class="img-responsive1" src="../Images/Logo-01(2).png" alt="Logo">
+                </a>
+            </div>
+            <div class="col-sm-3 pt-4 mt-2">
+                <div class="row justify-content-center">
+                    <div class="col-3 col-sm-6 border-end border-2 border-white p-4">                            
+                        <a class="nav-link" href="#">Crear cuenta</a>
+                    </div>
+                    <div class="col-3 col-sm-6 border-start border-2 border-white p-4">
+                        <a class="nav-link" href="#">Iniciar sesión</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-sm navbar-dark fondo2">
+        <nav class="row navbar navbar-expand-sm navbar-dark fondo2">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <a class="navbar-brand" href="#"><img class="img-logo-navbar" src="../Images/Vectores_Ilustraciones-10.png" alt="Logo"></a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Pages/NuestrosProductos.html">Nuestros productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Pages/NuestrosServicios.html">Nuestros servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Pages/PuntosDeVenta.html">Puntos de venta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Pages/QuienesSomos.html">Quiénes somos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Pages/Contacto.html">Contacto</a>
-                    </li> 
-                </ul>
-                <form class="d-flex">
-                    <button class="btn btn-light" type="button">                    
-                        <a href="#">
-                            <i class="fa-solid fa-cart-shopping links-sin-formato"></i>
-                        </a>
-                    </button>
-                </form>
-            </div>
+                    <a class="navbar-brand" href="#"><img class="img-logo-navbar ms-3" src="../Images/Vectores_Ilustraciones-10.png" alt="Logo"></a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Pages/NuestrosProductos.html">Nuestros productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Pages/NuestrosServicios.html">Nuestros servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Pages/PuntosDeVenta.html">Puntos de venta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Pages/QuienesSomos.html">Quiénes somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../Pages/Contacto.html">Contacto</a>
+                        </li> 
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn fondo1" type="button">                    
+                            <a href="#">
+                                <i class="fa-solid fa-cart-shopping links-sin-formato"></i>
+                            </a>
+                        </button>
+                    </form>
+                </div>
             </div>
         </nav>
     </header>
 
-    <main class="container-fluid fondo1">
-        <form class="form-horizontal p-5" action="/action_page.php">
-            <div class="mb-4">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" placeholder="abc@abc.com">
+    <main class="container-fluid fondo1 pt-5 pb-5">
+        <div class="row">
+            <div class="col-xl-12">
+                <h4>Dejanos tus datos y tu consulta y te contactaremos en breve!</h4>
             </div>
-            <div class="mb-4">
-                <label for="text" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" placeholder="abc abc">
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <form class="form-horizontal p-5" action="/action_page.php">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" placeholder="abc@abc.com">
+                    </div>
+                    <div class="mb-4">
+                        <label for="text" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" placeholder="abc abc">
+                    </div>
+                    <div class="mb-4">
+                        <label for="comment" class="form-label">Comentarios:</label>
+                        <textarea class="form-control" rows="3" placeholder="Escribe tu comentario..."></textarea>
+                    </div>
+                    <div class="form-check mb-3">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="remember">Deseo suscribirme al newsletter
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-light links-sin-formato">Enviar</button>
+                </form>
             </div>
-            <div class="mb-4">
-                <label for="comment" class="form-label">Comentarios:</label>
-                <textarea class="form-control" rows="3" placeholder="Escribe tu comentario..."></textarea>
-            </div>
-            <div class="form-check mb-3">
-                <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember">Deseo suscribirme al newsletter
-                </label>
-            </div>
-            <button type="submit" class="btn btn-light links-sin-formato">Enviar</button>
-        </form>
+        </div>
     </main>
 
-    <footer class="container-fluid fondo2 pt-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-4 links-sin-formato p-5">                
-                <h3>Medios de pago</h3>
-                <i class="fa-solid fa-money-bill-1-wave agrandar-iconos"></i>
-                <i class="fa-brands fa-cc-visa agrandar-iconos"></i>
-                <i class="fa-brands fa-cc-amex agrandar-iconos"></i>
-                <i class="fa-brands fa-cc-mastercard agrandar-iconos"></i>
+    <footer class="container-fluid fondo2 border-top border-4 border-white">
+        <div class="row fondo1 p-3">
+            <div class="col-md-12">
+                <div class="grid-footer">
+                    <div class="foo1 agitar-iconos"></div>
+                    <div class="foo2">@lazaretto.ba</div>
+                    <div class="foo1 agitar-iconos"></div>
+                    <div class="foo3">Seguinos en Instagram</div>
+                </div>
             </div>
-            <div class="col-md-4 links-sin-formato p-5">
-                <h3>Contactanos</h3>
-                <a class="links-sin-formato" href="https://api.whatsapp.com/send/?phone=5491164450222&text&app_absent=0">
-                    <i class="fa-brands fa-whatsapp agrandar-iconos"></i>
-                </a>
+        </div>
+        <div class="row d-flex align-items-center p-1">
+            <div class="col-md-4 links-sin-formato p-2">                
+                <div class="p-1">                
+                    <h5 class="fuente-gris">Medios de pago</h5>
+                    <i class="fa-solid fa-money-bill-1-wave agrandar-iconos"></i>
+                    <i class="fa-brands fa-cc-visa agrandar-iconos"></i>
+                    <i class="fa-brands fa-cc-amex agrandar-iconos"></i>
+                    <i class="fa-brands fa-cc-mastercard agrandar-iconos"></i>
+                </div>
+                <div class="links-sin-formato p-1">                
+                    <h5 class="fuente-gris">Dejanos un mensajito</h5>
+                    <a class="links-sin-formato" href="https://api.whatsapp.com/send/?phone=5491164450222&text&app_absent=0" target="_blank">
+                        <i class="fa-brands fa-whatsapp agrandar-iconos"></i>
+                    </a>
+                </div>
+                <div class="links-sin-formato p-1">                
+                    <h5 class="fuente-gris">Redes sociales</h5>
+                    <a class="links-sin-formato" href="https://www.facebook.com/Lazaretto.bakeryba" target="_blank">
+                        <i class="fa-brands fa-facebook agrandar-iconos"></i>
+                    </a>
+                    <a class="links-sin-formato" href="https://www.instagram.com/Lazaretto.bakeryba" target="_blank">
+                        <i class="fa-brands fa-instagram agrandar-iconos"></i>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-4 links-sin-formato p-5">
-                <h3>Redes sociales</h3>
-                <a class="links-sin-formato" href="https://www.facebook.com/Lazaretto.bakeryba">
-                    <i class="fa-brands fa-facebook agrandar-iconos"></i>
-                </a>
+            <div class="col-md-4 links-sin-formato p-3" id="bordes-1">
+                <h5 class="align-items-center fuente-gris">
+                    <i class="fa-solid fa-truck p-2 links-sin-formato"></i>Hacemos envíos propios de martes a domingos, sino podés pasar a retirar por el local
+                </h5>
+            </div>
+            <div class="col-md-4 p-2">
+                <h5 class="align-items-center fuente-gris">
+                    <i class="fa-solid fa-location-dot p-2 links-sin-formato"></i>Cabildo y Juramento. CABA
+                </h5>
+                <h5 class="align-items-center fuente-gris">
+                    <i class="fa-solid fa-phone p-2 links-sin-formato"></i>+5491111111111
+                </h5>
+                <h5 class="align-items-center fuente-gris">
+                    <i class="fa-solid fa-envelope p-2 links-sin-formato"></i>Lazarettobakery@gmail.com
+                </h5>
             </div>
         </div>
         <div class="row fondo3">
-            <p class="d-flex justify-content-center">
+            <p class="pt-3">
                 Copyright Nicolás Gallardo - 2022. Todos los derechos reservados
             </p>
         </div>
