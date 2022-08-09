@@ -4,8 +4,8 @@
 
 let crearCuenta = document.getElementById("crearCuenta");
 let iniciarSesión = document.getElementById("iniciarSesión");
-let panesDeHamburguesa = document.getElementById("panesDeHamburguesa");
-let agregarACarritoInput = document.getElementById("agregarACarrito");
+let agregarACarritoInput0 = document.getElementById("panesDeHamburguesa");
+const carrito = [];
 
 /*No está en uso todavía este objeto*/ const productos = [ 
     {
@@ -49,16 +49,19 @@ let agregarACarritoInput = document.getElementById("agregarACarrito");
 
 crearCuenta.addEventListener("click", formularioCrearCuenta);
 iniciarSesión.addEventListener("click", formularioIniciarSesión);
-panesDeHamburguesa.addEventListener("click", objetoAñadidoCarrito);
+agregarACarritoInput0.addEventListener("submit",agregarACarrito0);
 
 /* Funciones */
 
-function objetoAñadidoCarrito(){
-    agregarACarritoInput.addEventListener("input", agregarACarrito);
-    function agregarACarrito(){
-        localStorage.setItem("Cantidad",agregarACarritoInput.value);
-    }
-    alert("Objeto añadido exitosamente al carrito");
+function agregarACarrito0(e){
+    e.preventDefault();
+    let agregarPanesDeHamburguesa = e.target;
+    productos[0].cantidad = 0;
+    productos[0].cantidad = parseInt(agregarPanesDeHamburguesa.children[0].value);
+    carrito.push(productos[0]);
+    let carritoJSON = JSON.stringify(carrito);
+    localStorage.setItem("Detalle comprado",carritoJSON);
+    alert("El producto fue añadido al carrito");
 }
 
 function formularioCrearCuenta(){
