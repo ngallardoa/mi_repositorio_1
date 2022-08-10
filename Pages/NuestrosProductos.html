@@ -40,13 +40,35 @@
                 </a>
             </div>
             <div class="col-sm-3 pt-4 mt-2">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" id="crearCuentaBotón">
                     <div class="col-4 col-sm-6 border-end border-2 border-white p-4">                            
-                        <a class="nav-link" href="#" id="crearCuenta">Crear cuenta</a>
+                        <button type="button" class="btn btn-basic" data-bs-toggle="modal" data-bs-target="#myModal1">Crear cuenta</button>
                     </div>
                     <div class="col-4 col-sm-6 border-start border-2 border-white p-4">
-                        <a class="nav-link" href="#" id="iniciarSesión">Iniciar sesión</a>
-
+                        <button type="button" class="btn btn-basic" data-bs-toggle="modal" data-bs-target="#myModal2">Iniciar sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="myModal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ingresa tus datos</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body justify-content-center">
+                        <form class="justify-content-center" id="crearCuenta1">
+                            <input class="d-flex m-2" type="text" name="Mail" placeholder="Ingresa tu mail">
+                            <input class="d-flex m-2" type="password" name="Contraseña" placeholder="Ingresa una contraseña">
+                            <input class="d-flex m-2" type="text" name="Nombre" placeholder="Ingresa tu nombre y apellido">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <form id="crearCuenta0">
+                            <input type="submit" class="btn btn-success" data-bs-dismiss="modal" value="Enviar">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -100,7 +122,7 @@
                         <h4 class="card-title">Panes de hamburguesa</h4>
                         <p class="card-text">$100</p>
                         <form class="d-flex align-self-center" id="panesDeHamburguesa">
-                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
                             <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
                         </form>
                     </div>
@@ -112,7 +134,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Pan rústico</h4>
                         <p class="card-text">$100</p>
-                        <a href="#" class="btn fondo2 fuente-gris" id="panRústico">Añadir al carrito</a>
+                        <form class="d-flex align-self-center" id="panRústico">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
+                            <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -122,7 +147,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Babka de manzana</h4>
                         <p class="card-text">$100</p>
-                        <a href="#" class="btn fondo2 fuente-gris" id="babkaDeManzana">Añadir al carrito</a>
+                        <form class="d-flex align-self-center" id="babkaDeManzana">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
+                            <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -134,7 +162,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Bollos suizos</h4>
                         <p class="card-text">$100</p>
-                        <a href="#" class="btn fondo2 fuente-gris" id="bollosSuizos">Añadir al carrito</a>
+                        <form class="d-flex align-self-center" id="bollosSuizos">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
+                            <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -144,7 +175,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Pan lactal</h4>
                         <p class="card-text">$100</p>
-                        <a href="#" class="btn fondo2 fuente-gris" id="panLactal">Añadir al carrito</a>
+                        <form class="d-flex align-self-center" id="panLactal">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
+                            <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -154,7 +188,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Pan integral</h4>
                         <p class="card-text">$100</p>
-                        <a href="#" class="btn fondo2 fuente-gris" id="panIntegral">Añadir al carrito</a>
+                        <form class="d-flex align-self-center" id="panIntegral">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
+                            <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -166,7 +203,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Torta de chocolate</h4>
                         <p class="card-text">$100</p>
-                        <a href="#" class="btn fondo2 fuente-gris" id="tortaDeChocolate">Añadir al carrito</a>
+                        <form class="d-flex align-self-center" id="tortaDeChocolate">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
+                            <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -176,7 +216,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Berlinesas</h4>
                         <p class="card-text">$100</p>
-                        <a href="#" class="btn fondo2 fuente-gris">Añadir al carrito</a>
+                        <form class="d-flex align-self-center" id="berlinesas">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
+                            <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -186,7 +229,10 @@
                     <div class="card-body">
                         <h4 class="card-title">Bundt cake</h4>
                         <p class="card-text">$100</p>
-                        <a href="#" class="btn fondo2 fuente-gris">Añadir al carrito</a>
+                        <form class="d-flex align-self-center" id="bundtCake">
+                            <input class="form-control m-2 align-self-center" type="number" placeholder="Cantidad" min="0">
+                            <input href="#" class="btn fondo2 fuente-gris" type="submit" value="Añadir al carrito">
+                        </form>
                         <script src="../JS/mainNuestrosProductos.js"></script>
                     </div>
                 </div>
