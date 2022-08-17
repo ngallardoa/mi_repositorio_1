@@ -3,11 +3,14 @@
 /* Variables */
 
 let crearCuenta0 = document.getElementById("crearCuenta0");
-let iniciarSesión = document.getElementById("iniciarSesión");
+let iniciarSesión0 = document.getElementById("iniciarSesión0");
 let productoEncontrado;
 let posiciónProducto1;
 let posiciónProducto2;
 let nombre;
+let agregarProducto;
+let idProducto;
+let totalCarrito;
 const carrito = [];
 const productos = [{nombre: "Pan de hamburguesas", precio: 500, descripción: "Pan para hamburguesas. Viene por medio kg", cantidad: 0, categoría: "panadería", id1: "panesDeHamburguesa"},
     {nombre: "Pan rústico", precio: 200, descripción: "Pan integral con semillas. Viene por 1 kg", cantidad: 0, categoría: "panadería", id1: "panRústico"},
@@ -23,7 +26,7 @@ const agregarACarritoInputArray = [document.getElementById("panesDeHamburguesa")
 // Eventos
 
 crearCuenta0.addEventListener("submit", formularioCrearCuenta0);
-iniciarSesión.addEventListener("click", formularioIniciarSesión);
+iniciarSesión0.addEventListener("submit", formularioIniciarSesión0);
 
 /* Funciones */
 
@@ -37,8 +40,8 @@ eventos();
 
 function agregarACarrito0(e) {
     e.preventDefault();
-    let agregarProducto = e.target;
-    let idProducto = e.target.id;
+    agregarProducto = e.target;
+    idProducto = e.target.id;
     function agregarACarrito1(id) {
         if (carrito.length === 0) {
             posiciónProducto1 = productos.findIndex(nombreProducto => nombreProducto.id1 == id);
@@ -47,45 +50,126 @@ function agregarACarrito0(e) {
         }
         else {
             productoEncontrado = carrito.findIndex(nombreProducto => nombreProducto.id1 == id);
-            if (productoEncontrado != -1) {
-                posiciónProducto2 = carrito.findIndex(nombreProducto => nombreProducto.id1 == id);
-                carrito[posiciónProducto2].cantidad += parseInt(agregarProducto.children[0].value);
-            }
-            else {
-                posiciónProducto1 = productos.findIndex(nombreProducto => nombreProducto.id1 == id);
-                productos[posiciónProducto1].cantidad += parseInt(agregarProducto.children[0].value);
-                carrito.push(productos[posiciónProducto1]);
-            }
+            productoEncontrado != -1 ? (
+            posiciónProducto2 = carrito.findIndex(nombreProducto => nombreProducto.id1 == id),
+            carrito[posiciónProducto2].cantidad += parseInt(agregarProducto.children[0].value) 
+            ) : (
+            posiciónProducto1 = productos.findIndex(nombreProducto => nombreProducto.id1 == id),
+            productos[posiciónProducto1].cantidad += parseInt(agregarProducto.children[0].value),
+            carrito.push(productos[posiciónProducto1])
+            );
         }
         let carritoJSON = JSON.stringify(carrito);
         localStorage.setItem("Detalle comprado",carritoJSON);
         agregarProducto.children[0].value = "";
-        alert("Producto añadido con éxito");
+        swal("Carrito","Producto añadido con éxito","success");
     }
     agregarACarrito1(idProducto);
+    calcularSubtotal(carrito);
+    calcularTotal(carrito);
+    imprimirEnCarrito();
 }
 
 function formularioCrearCuenta0(e) {
     e.preventDefault();
-    let crearCuenta2 = document.getElementById("crearCuenta1");
-    let crearCuentaBotón = document.getElementById("crearCuentaBotón");
-    nombre = crearCuenta2.children[2].value;
-    crearCuentaBotón.innerHTML = "Bienvenido, "+ nombre ;
-    for (i = 0; i < crearCuenta2.children.length; i ++) {
-        crearCuenta2.children[i].value = "";   
+    let crearCuenta1 = document.getElementById("crearCuenta1");
+    let sesiónBotón = document.getElementById("sesiónBotón");
+    let mail = crearCuenta1.children[0].value;
+    for (i = 0; i < crearCuenta1.children.length; i ++) {
+        crearCuenta1.children[i].value = "";   
     }
-    alert("Cuenta creada exitosamente");
+    swal("Cuenta","Cuenta creada exitosamente","success");
+    sesiónBotón.innerHTML = `
+        <div class="col-sm-12 p-4">                            
+            Bienvenido/a, ${mail}
+        </div>
+    `;
 }
 
-function formularioIniciarSesión() {
-    prompt("Introduzca su mail");
-    prompt("Introduzca su contraseña");
+function formularioIniciarSesión0(e) {
+    e.preventDefault();
+    let iniciarSesión1 = document.getElementById("iniciarSesión1");
+    let sesiónBotón = document.getElementById("sesiónBotón");
+    let mail = iniciarSesión1.children[0].value;
+    for (i = 0; i < iniciarSesión1.children.length; i ++) {
+        iniciarSesión1.children[i].value = "";   
+    }
+    swal("Cuenta","Sesión iniciada exitosamente","success");
+    sesiónBotón.innerHTML = `
+        <div class="col-sm-12 p-4">                            
+            Bienvenido/a, ${mail}
+        </div>
+    `;
 }
 
+function imprimirEnCarrito(){
+    let cuerpoCarrito0 = document.getElementById("cuerpoCarrito0");
+    let cuerpoCarrito1 = document.getElementById("cuerpoCarrito1");
+    let totalCarrito0 = document.getElementById("totalCarrito0");
+    cuerpoCarrito0.innerHTML = "";
+    cuerpoCarrito1.classList.remove("ocultar");    
+    for (i = 0; i < carrito.length; i++) {
+        cuerpoCarrito0.insertAdjacentHTML("beforeend",`
+            <div class="row justify-content-center m-2">
+                <div class="col-sm-3">
+                    <h5><small>${carrito[i].nombre}</small></h5>
+                </div>
+                <div class="col-sm-2">
+                    <h5><small>${carrito[i].cantidad}</small></h5>
+                </div>
+                <div class="col-sm-2">
+                    <h5><small>$${carrito[i].precio}</small></h5>
+                </div>
+                <div class="col-sm-2">
+                    <h5><small>$${carrito[i].total}</small></h5>
+                </div>
+                <div class="col-sm-3">
+                    <h5>
+                        <small>
+                            <button class="btn align-self-center fondo2" type="button">
+                                <i class="fa-solid fa-plus fuente-gris"></i>
+                            </button>
+                            <button class="btn align-self-center fondo2" type="button">
+                                <i class="fa-solid fa-minus fuente-gris"></i>
+                            </button>
+                            <button class="btn align-self-center fondo2" type="button">
+                                <i class="fa-solid fa-trash-can fuente-gris"></i>
+                            </button>
+                        </small>
+                    </h5>
+                </div>
+            </div> 
+        `);
+    }
+    totalCarrito0.innerHTML = `
+        <div class="col-sm-6">
+            <h5>
+                <strong>Total</strong>
+            </h5>
+        </div>
+        <div class="col-sm-6">
+            <h5>
+                <strong>$${totalCarrito}</strong>
+            </h5>
+        </div>
+    `;
+}
 
+function calcularSubtotal(array) {
+    let subtotalCarrito = [];
+    for (i = 0; i < array.length; i++) {
+        subtotalCarrito.push({
+        total: parseInt(array[i].precio) * parseInt(array[i].cantidad)
+        });
+        array[i].total = subtotalCarrito[i].total;
+    }
+    return subtotalCarrito;
+}
 
-
-
-
-
-
+function calcularTotal(array) {
+    totalCarrito = 0;
+    for (i = 0; i < array.length; i++) {
+        totalCarrito += parseInt(array[i].total);
+    }
+    return totalCarrito;
+}

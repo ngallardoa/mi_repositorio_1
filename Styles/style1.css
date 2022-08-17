@@ -236,4 +236,13 @@ span {
   height: 800px;
 }
 
+.ocultar {
+  display: none;
+}
+
+.centrar {
+  display: flex;
+  justify-content: center;
+}
+
 /*# sourceMappingURL=style1.css.map */

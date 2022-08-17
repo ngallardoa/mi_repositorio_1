@@ -40,7 +40,7 @@
                 </a>
             </div>
             <div class="col-sm-3 pt-4 mt-2">
-                <div class="row justify-content-center" id="crearCuentaBotón">
+                <div class="row justify-content-center" id="sesiónBotón">
                     <div class="col-4 col-sm-6 border-end border-2 border-white p-4">                            
                         <button type="button" class="btn btn-basic" data-bs-toggle="modal" data-bs-target="#myModal1">Crear cuenta</button>
                     </div>
@@ -53,27 +53,48 @@
         <div class="modal" id="myModal1">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header"> <!-- Cabecera del modal crear cuenta -->
                         <h4 class="modal-title">Ingresa tus datos</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <div class="modal-body justify-content-center">
-                        <form class="justify-content-center" id="crearCuenta1">
-                            <input class="d-flex m-2" type="text" name="Mail" placeholder="Ingresa tu mail">
-                            <input class="d-flex m-2" type="password" name="Contraseña" placeholder="Ingresa una contraseña">
-                            <input class="d-flex m-2" type="text" name="Nombre" placeholder="Ingresa tu nombre y apellido">
+                    <div class="modal-body">
+                        <form id="crearCuenta1">
+                            <input class="d-inline m-2" type="text" name="Mail" placeholder="Ingresa tu mail">
+                            <input class="d-inline m-2" type="password" name="Contraseña" placeholder="Ingresa una contraseña">
+                            <input class="d-inline m-2" type="text" name="Nombre" placeholder="Ingresa tu nombre y apellido">
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn fondo3" data-bs-dismiss="modal">Cerrar</button>
                         <form id="crearCuenta0">
-                            <input type="submit" class="btn btn-success" data-bs-dismiss="modal" value="Enviar">
+                            <input type="submit" class="btn fondo2 fuente-gris" data-bs-dismiss="modal" value="Enviar">
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="modal" id="myModal2">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"> <!-- Cabecera del modal iniciar sesión -->
+                        <h4 class="modal-title">Ingresa tus datos</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="iniciarSesión1">
+                            <input class="d-inline m-2" type="text" name="Mail" placeholder="Ingresa tu mail">
+                            <input class="d-inline m-2" type="password" name="Contraseña" placeholder="Ingresa tu contraseña">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn fondo3" data-bs-dismiss="modal">Cerrar</button>
+                        <form id="iniciarSesión0">
+                            <input type="submit" class="btn fondo2 fuente-gris" data-bs-dismiss="modal" value="Enviar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <nav class="row navbar navbar-expand-sm navbar-dark fondo2">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,12 +123,54 @@
                         </li> 
                     </ul>
                     <form class="d-flex">
-                        <button class="btn fondo1" type="button">                    
+                        <button class="btn fondo1" type="button" data-bs-toggle="modal" data-bs-target="#modalCarrito">                    
                             <a href="#">
                                 <i class="fa-solid fa-cart-shopping links-sin-formato"></i>
                             </a>
                         </button>
                     </form>
+                    <div class="modal modal-xl" id="modalCarrito">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> <!-- Cabecera del modal carrito -->
+                                    <h4 class="modal-title">Carrito de compras</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body justify-content-center" > <!-- Cuerpo del modal carrito -->
+                                    <div class="row justify-content-center m-2 ocultar" id="cuerpoCarrito1">
+                                        <div class="col-sm-3">
+                                            <h5>Descripción</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5>Cantidad</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5>Precio unitario</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5>Precio total</h5>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>Acciones</h5>
+                                        </div>
+                                    </div>
+                                    <p class="row justify-content-center m-2" id="cuerpoCarrito0">
+                                        No hay productos en el carrito
+                                    </p>
+                                    <div class="modal-footer centrar"> <!-- Pie del modal carrito -->
+                                        <div class="row justify-content-center mt-3" id="totalCarrito0">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer"> <!-- Pie del modal carrito -->
+                                    <button type="button" class="btn fondo3" data-bs-dismiss="modal">Cerrar</button>
+                                    <form id="iniciarCompra0">
+                                        <input type="submit" class="btn fondo2 fuente-gris" data-bs-dismiss="modal" value="Iniciar compra">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -299,6 +362,7 @@
             </p>
         </div>
     </footer>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
+

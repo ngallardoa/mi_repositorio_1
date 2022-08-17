@@ -248,16 +248,16 @@ span{
 /*Google Maps*/
 
 .map-container{
-    overflow:hidden;
+    overflow: hidden;
     padding: 10px;
     position: relative;
-    height:0;
+    height: 0;
     margin: 10px;
     iframe{
-        left:0;
-        top:0;
+        left: 0;
+        top: 0;
         @include tamaños(100%, 200px);
-        position:absolute;
+        position: absolute;
     }
 }
 
@@ -275,3 +275,11 @@ span{
     height: map-get($estilos-varios, alto-img-landing);
 }
 
+.ocultar{
+    display: none;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+}
