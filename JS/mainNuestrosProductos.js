@@ -23,7 +23,7 @@ const productos = [{nombre: "Pan de hamburguesas", precio: 500, descripción: "P
     {nombre: "Berlinesas", precio: 300, descripción: "Facturas rellenas con dulce de leche o pastelera. Vienen por docena", cantidad: 0, categoría: "panadería", id1: "berlinesas"},
     {nombre: "Bundt cake", precio: 450, descripción: "Torta de vainilla y especias. Viene por unidad", cantidad: 0, categoría: "pastelería", id1: "bundtCake"}];
 const agregarACarritoInputArray = [document.getElementById("panesDeHamburguesa"),document.getElementById("panRústico"),document.getElementById("babkaDeManzana"),document.getElementById("bollosSuizos"),document.getElementById("panLactal"),document.getElementById("panIntegral"),document.getElementById("tortaDeChocolate"),document.getElementById("berlinesas"),document.getElementById("bundtCake")];
-// const carritoSumarArray = [];
+let carritoSumarArray = [];
 // const carritoRestarArray = [];
 // const carritoBorrarArray = [];
 
@@ -41,6 +41,7 @@ function eventos(array,función,evento) {
 }
 
 eventos(agregarACarritoInputArray,agregarACarrito0,"submit");
+// eventos(carritoSumarArray,carritoSumar,"click");
 
 function agregarACarrito0(e) {
     e.preventDefault();
@@ -130,13 +131,13 @@ function imprimirEnCarrito() {
                 <div class="col-sm-3">
                     <h5>
                         <small>
-                            <button class="btn align-self-center fondo2" type="button" id="carritoSumar${i}">
+                            <button class="btn align-self-center fondo2" type="button" id="carritoSumar-${carrito[i].id1}">
                                 <i class="fa-solid fa-plus fuente-gris"></i>
                             </button>
-                            <button class="btn align-self-center fondo2" type="button" id="carritoRestar${i}">
+                            <button class="btn align-self-center fondo2" type="button" id="carritoRestar-${carrito[i].id1}">
                                 <i class="fa-solid fa-minus fuente-gris"></i>
                             </button>
-                            <button class="btn align-self-center fondo2" type="button" id="carritoBorrar${i}">
+                            <button class="btn align-self-center fondo2" type="button" id="carritoBorrar-${carrito[i].id1}">
                                 <i class="fa-solid fa-trash-can fuente-gris"></i>
                             </button>
                         </small>
@@ -157,6 +158,7 @@ function imprimirEnCarrito() {
             </h5>
         </div>
     `;
+    crearGetElementByIdCarrito();
 }
 
 function calcularSubtotal(array) {
@@ -179,16 +181,23 @@ function calcularTotal(array) {
 }
 
 // function carritoSumar() {
-//     idProducto1 = e.target.id;
-//     let idProducto1id = idProducto1.prototype.substring(12,(idProducto1.length-1));
-//     carrito[idProducto1id].cantidad ++;
+//     carrito[encontrarProductoEnCarrito()].cantidad ++;
 //     calcularSubtotal(carrito);
 //     calcularTotal(carrito);
 //     imprimirEnCarrito(); 
+//     swal("Hecho");
 // }
 
-// function crearGetElementByIdCarrito() {
-//     for (i = 0; i < carrito.length; i ++) {
-//         carritoSumarArray.push(document.getElementById(`carritoSumar-${i}`));
-//     } 
+function crearGetElementByIdCarrito() {
+    carritoSumarArray = [];
+    for (i = 0; i < carrito.length; i ++) {
+        carritoSumarArray.push(document.getElementById(`carritoSumar-${carrito[i].id1}`));
+    } 
+}
+
+// function encontrarProductoEnCarrito() {
+//     idProducto1 = e.target.id;
+//     let idProducto1id = idProducto1.prototype.substring(idProducto1.indexOf("-"));
+//     let ProductoEncontradoEnCarrito = carrito.findIndex(nombreProducto => nombreProducto.id1 == idProducto1id);
+//     return ProductoEncontradoEnCarrito;
 // }
