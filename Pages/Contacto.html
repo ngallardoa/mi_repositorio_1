@@ -34,22 +34,66 @@
                 </form>
             </div>
             <div class="col-sm-6">
-                <a href="./index.html">
+                <a href="../index.html">
                     <img class="img-responsive1" src="../Images/Logo-01(2).png" alt="Logo">
                 </a>
             </div>
             <div class="col-sm-3 pt-4 mt-2">
-                <div class="row justify-content-center">
-                    <div class="col-3 col-sm-6 border-end border-2 border-white p-4">                            
-                        <a class="nav-link" href="#">Crear cuenta</a>
+                <div class="row justify-content-center" id="sesiónBotón">
+                    <div class="col-4 col-sm-6 border-end border-2 border-white p-4">                            
+                        <button type="button" class="btn btn-basic" data-bs-toggle="modal" data-bs-target="#myModal1">Crear cuenta</button>
                     </div>
-                    <div class="col-3 col-sm-6 border-start border-2 border-white p-4">
-                        <a class="nav-link" href="#">Iniciar sesión</a>
+                    <div class="col-4 col-sm-6 border-start border-2 border-white p-4">
+                        <button type="button" class="btn btn-basic" data-bs-toggle="modal" data-bs-target="#myModal2">Iniciar sesión</button>
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="modal" id="myModal1"> <!-- Inicio modal crear cuenta -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"> <!-- Cabecera del modal crear cuenta -->
+                        <h4 class="modal-title">Ingresa tus datos</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="crearCuenta1">
+                            <input class="d-inline m-2" type="text" name="Mail" placeholder="Ingresa tu mail">
+                            <input class="d-inline m-2" type="password" name="Contraseña" placeholder="Ingresa una contraseña">
+                            <input class="d-inline m-2" type="text" name="Nombre" placeholder="Ingresa tu nombre y apellido">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn fondo3" data-bs-dismiss="modal">Cerrar</button>
+                        <form id="crearCuenta0">
+                            <input type="submit" class="btn fondo2 fuente-gris" data-bs-dismiss="modal" value="Enviar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Fin modal crear cuenta -->
+        <div class="modal" id="myModal2"> <!-- Inicio modal iniciar sesión -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"> <!-- Cabecera del modal iniciar sesión -->
+                        <h4 class="modal-title">Ingresa tus datos</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="iniciarSesión1">
+                            <input class="d-inline m-2" type="text" name="Mail" placeholder="Ingresa tu mail">
+                            <input class="d-inline m-2" type="password" name="Contraseña" placeholder="Ingresa tu contraseña">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn fondo3" data-bs-dismiss="modal">Cerrar</button>
+                        <form id="iniciarSesión0">
+                            <input type="submit" class="btn fondo2 fuente-gris" data-bs-dismiss="modal" value="Enviar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Fin modal iniciar sesión -->
         <nav class="row navbar navbar-expand-sm navbar-dark fondo2">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +106,7 @@
                             <a class="nav-link" href="../index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../Pages/NuestrosProductos.html">Nuestros productos</a>
+                            <a class="nav-link active" href="../Pages/NuestrosProductos.html">Nuestros productos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../Pages/NuestrosServicios.html">Nuestros servicios</a>
@@ -74,21 +118,62 @@
                             <a class="nav-link" href="../Pages/QuienesSomos.html">Quiénes somos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../Pages/Contacto.html">Contacto</a>
+                            <a class="nav-link" aria-current="page" href="../Pages/Contacto.html">Contacto</a>
                         </li> 
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn fondo1" type="button">                    
+                    <div class="d-flex">
+                        <button class="btn fondo1" type="button" data-bs-toggle="modal" data-bs-target="#modalCarrito">                    
                             <a href="#">
                                 <i class="fa-solid fa-cart-shopping links-sin-formato"></i>
                             </a>
                         </button>
-                    </form>
+                    </div>
+                    <div class="modal modal-xl" id="modalCarrito"> <!-- Inicio modal carrito -->
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> <!-- Cabecera del modal carrito -->
+                                    <h4 class="modal-title">Carrito de compras</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body justify-content-center" > <!-- Cuerpo del modal carrito -->
+                                    <div class="row justify-content-center m-2 ocultar" id="cuerpoCarrito1">
+                                        <div class="col-sm-3">
+                                            <h5>Descripción</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5>Cantidad</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5>Precio unitario</h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <h5>Precio total</h5>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>Acciones</h5>
+                                        </div>
+                                    </div>
+                                    <p class="row justify-content-center m-2" id="cuerpoCarrito0">
+                                        No hay productos en el carrito
+                                    </p>
+                                    <div class="modal-footer centrar"> <!-- Pie del modal carrito -->
+                                        <div class="row justify-content-center mt-3" id="totalCarrito0">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer"> <!-- Pie del modal carrito -->
+                                    <button type="button" class="btn fondo3" data-bs-dismiss="modal">Cerrar</button>
+                                    <form id="iniciarCompra0">
+                                        <input type="submit" class="btn fondo2 fuente-gris" data-bs-dismiss="modal" value="Iniciar compra">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- Fin modal carrito -->
                 </div>
             </div>
         </nav>
     </header>
-
     <main class="container-fluid fondo1 pt-5 pb-5">
         <div class="row">
             <div class="col-xl-12">
@@ -121,6 +206,7 @@
         </div>
     </main>
     <script src="../JS/mainContacto.js"></script>
+    <script src="../JS/mainNuestrosProductos.js"></script>
     <footer class="container-fluid fondo2 border-top border-4 border-white">
         <div class="row fondo1 p-3">
             <div class="col-md-12">

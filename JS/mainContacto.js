@@ -1,7 +1,5 @@
-let formulario;
-
 function enviarFormulario() {
-    formulario = document.getElementById("formulario");
+    let formulario = document.getElementById("formulario");
     formulario.addEventListener("submit", function(e) {
         e.preventDefault();
         const preEnvío = new FormData(formulario);
@@ -14,6 +12,7 @@ function enviarFormulario() {
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(error => console.log(error));
+        formulario.reset();
     })
 }
 
