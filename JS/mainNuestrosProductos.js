@@ -4,13 +4,13 @@
 
 let crearCuenta0 = document.getElementById("crearCuenta0");
 let iniciarSesión0 = document.getElementById("iniciarSesión0");
-let productoEncontrado;
-let posiciónProducto1;
-let posiciónProducto2;
-let agregarProducto0;
-let agregarProducto1;
-let idProducto0;
-let idProducto1;
+// let productoEncontrado;
+// let posiciónProducto1;
+// let posiciónProducto2;
+// let agregarProducto0;
+// let agregarProducto1;
+// let idProducto0;
+// let idProducto1;
 let totalCarrito;
 let carrito = [];
 const productos = [{nombre: "Pan de hamburguesas", precio: 500, descripción: "Pan para hamburguesas. Viene por medio kg", cantidad: 0, categoría: "panadería", id1: "panesDeHamburguesa"},
@@ -45,8 +45,8 @@ function eventos(array,función,evento) {
 
 function agregarACarrito0(e) {
     e.preventDefault();
-    agregarProducto0 = e.target;
-    idProducto0 = e.target.id;
+    let agregarProducto0 = e.target;
+    let idProducto0 = e.target.id;
     function agregarACarrito1(id) {
         if (carrito.length == 0) {
             posiciónProducto1 = productos.findIndex(nombreProducto => nombreProducto.id1 == id);
@@ -182,7 +182,7 @@ function calcularTotal(array) {
 }
 
 function carritoSumar(e) {
-    idProducto1 = e.target.id;
+    let idProducto1 = e.target.id;
     carrito[encontrarProductoEnCarrito(idProducto1)].cantidad ++;
     calcularSubtotal(carrito);
     calcularTotal(carrito);
@@ -191,7 +191,7 @@ function carritoSumar(e) {
 }
 
 function carritoRestar(e) {
-    idProducto1 = e.target.id;
+    let idProducto1 = e.target.id;
     if (carrito[encontrarProductoEnCarrito(idProducto1)].cantidad == 1) {
         carrito.splice([encontrarProductoEnCarrito()],1);
         swal("Producto eliminado");
@@ -206,7 +206,7 @@ function carritoRestar(e) {
 }
 
 function carritoBorrar(e) {
-    idProducto1 = e.target.id;
+    let idProducto1 = e.target.id;
     carrito.splice([encontrarProductoEnCarrito(idProducto1)],1);
     calcularSubtotal(carrito);
     calcularTotal(carrito);
