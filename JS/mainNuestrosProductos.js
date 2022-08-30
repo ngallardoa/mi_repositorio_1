@@ -12,7 +12,7 @@ let agregarProducto1;
 let idProducto0;
 let idProducto1;
 let totalCarrito;
-const carrito = [];
+let carrito = [];
 const productos = [{nombre: "Pan de hamburguesas", precio: 500, descripción: "Pan para hamburguesas. Viene por medio kg", cantidad: 0, categoría: "panadería", id1: "panesDeHamburguesa"},
     {nombre: "Pan rústico", precio: 200, descripción: "Pan integral con semillas. Viene por 1 kg", cantidad: 0, categoría: "panadería", id1: "panRústico"},
     {nombre: "Babka de manzana", precio: 500, descripción: "Trenza rellena de manzana. Pesa aproximadamente 0.75 kg", cantidad: 0, categoría: "panadería", id1: "babkaDeManzana"},
@@ -24,13 +24,16 @@ const productos = [{nombre: "Pan de hamburguesas", precio: 500, descripción: "P
     {nombre: "Bundt cake", precio: 450, descripción: "Torta de vainilla y especias. Viene por unidad", cantidad: 0, categoría: "pastelería", id1: "bundtCake"}];
 const agregarACarritoInputArray = [document.getElementById("panesDeHamburguesa"),document.getElementById("panRústico"),document.getElementById("babkaDeManzana"),document.getElementById("bollosSuizos"),document.getElementById("panLactal"),document.getElementById("panIntegral"),document.getElementById("tortaDeChocolate"),document.getElementById("berlinesas"),document.getElementById("bundtCake")];
 let carritoSumarArray = [];
-// const carritoRestarArray = [];
-// const carritoBorrarArray = [];
+let carritoRestarArray = [];
+let carritoBorrarArray = [];
+let iniciarCompra0 = document.getElementById("iniciarCompra0");
 
 // Eventos
 
 crearCuenta0.addEventListener("submit", formularioCrearCuenta0);
 iniciarSesión0.addEventListener("submit", formularioIniciarSesión0);
+iniciarCompra0.addEventListener("submit",iniciarCompra);
+eventos(agregarACarritoInputArray,agregarACarrito0,"submit");
 
 /* Funciones */
 
@@ -39,9 +42,6 @@ function eventos(array,función,evento) {
         array[i].addEventListener(`${evento}`,función);
     }
 }
-
-eventos(agregarACarritoInputArray,agregarACarrito0,"submit");
-// eventos(carritoSumarArray,carritoSumar,"click");
 
 function agregarACarrito0(e) {
     e.preventDefault();
@@ -64,8 +64,6 @@ function agregarACarrito0(e) {
             carrito.push(productos[posiciónProducto1])
             );
         }
-        let carritoJSON = JSON.stringify(carrito);
-        localStorage.setItem("Detalle comprado",carritoJSON);
         agregarProducto0.children[0].value = "";
         swal("Carrito","Producto añadido con éxito","success");
     }
@@ -131,13 +129,13 @@ function imprimirEnCarrito() {
                 <div class="col-sm-3">
                     <h5>
                         <small>
-                            <button class="btn align-self-center fondo2" type="button" id="carritoSumar-${carrito[i].id1}">
+                            <button class="btn align-self-center fondo2" id="carritoSumar-${carrito[i].id1}">
                                 <i class="fa-solid fa-plus fuente-gris"></i>
                             </button>
-                            <button class="btn align-self-center fondo2" type="button" id="carritoRestar-${carrito[i].id1}">
+                            <button class="btn align-self-center fondo2" id="carritoRestar-${carrito[i].id1}">
                                 <i class="fa-solid fa-minus fuente-gris"></i>
                             </button>
-                            <button class="btn align-self-center fondo2" type="button" id="carritoBorrar-${carrito[i].id1}">
+                            <button class="btn align-self-center fondo2"id="carritoBorrar-${carrito[i].id1}">
                                 <i class="fa-solid fa-trash-can fuente-gris"></i>
                             </button>
                         </small>
@@ -159,6 +157,9 @@ function imprimirEnCarrito() {
         </div>
     `;
     crearGetElementByIdCarrito();
+    eventos(carritoSumarArray,carritoSumar,"click");
+    eventos(carritoRestarArray,carritoRestar,"click");
+    eventos(carritoBorrarArray,carritoBorrar,"click");
 }
 
 function calcularSubtotal(array) {
@@ -180,24 +181,78 @@ function calcularTotal(array) {
     return totalCarrito;
 }
 
-// function carritoSumar() {
-//     carrito[encontrarProductoEnCarrito()].cantidad ++;
-//     calcularSubtotal(carrito);
-//     calcularTotal(carrito);
-//     imprimirEnCarrito(); 
-//     swal("Hecho");
-// }
+function carritoSumar(e) {
+    idProducto1 = e.target.id;
+    carrito[encontrarProductoEnCarrito(idProducto1)].cantidad ++;
+    calcularSubtotal(carrito);
+    calcularTotal(carrito);
+    imprimirEnCarrito(); 
+    swal("Hecho");
+}
+
+function carritoRestar(e) {
+    idProducto1 = e.target.id;
+    if (carrito[encontrarProductoEnCarrito(idProducto1)].cantidad == 1) {
+        carrito.splice([encontrarProductoEnCarrito()],1);
+        swal("Producto eliminado");
+    }
+    else {
+        carrito[encontrarProductoEnCarrito(idProducto1)].cantidad --;
+    }
+    calcularSubtotal(carrito);
+    calcularTotal(carrito);
+    imprimirEnCarrito(); 
+    swal("Hecho");
+}
+
+function carritoBorrar(e) {
+    idProducto1 = e.target.id;
+    carrito.splice([encontrarProductoEnCarrito(idProducto1)],1);
+    calcularSubtotal(carrito);
+    calcularTotal(carrito);
+    imprimirEnCarrito(); 
+    swal("Hecho");
+}
 
 function crearGetElementByIdCarrito() {
     carritoSumarArray = [];
+    carritoRestarArray = [];
+    carritoBorrarArray = [];
     for (i = 0; i < carrito.length; i ++) {
         carritoSumarArray.push(document.getElementById(`carritoSumar-${carrito[i].id1}`));
+        carritoRestarArray.push(document.getElementById(`carritoRestar-${carrito[i].id1}`));
+        carritoBorrarArray.push(document.getElementById(`carritoBorrar-${carrito[i].id1}`));
     } 
 }
 
-// function encontrarProductoEnCarrito() {
-//     idProducto1 = e.target.id;
-//     let idProducto1id = idProducto1.prototype.substring(idProducto1.indexOf("-"));
-//     let ProductoEncontradoEnCarrito = carrito.findIndex(nombreProducto => nombreProducto.id1 == idProducto1id);
-//     return ProductoEncontradoEnCarrito;
-// }
+function indexOfMásUno(string,elemento) {
+    let index = string.indexOf(elemento);
+    index ++;
+    return index;
+}
+
+function encontrarProductoEnCarrito(string) {
+    let idProducto1id = string.substring(indexOfMásUno(string,"-"));
+    let ProductoEncontradoEnCarrito = carrito.findIndex(nombreProducto => nombreProducto.id1 == idProducto1id);
+    return ProductoEncontradoEnCarrito;
+}
+
+function iniciarCompra(e) {
+    e.preventDefault();
+    let carritoJSON = JSON.stringify(carrito);
+    localStorage.setItem("Detalle comprado",carritoJSON);
+    carrito = [];
+    calcularTotal(carrito);
+    imprimirEnCarrito();
+    limpiarModalCarrito();
+    swal("Procesado!");
+}
+
+function limpiarModalCarrito() {
+    let cuerpoCarrito0 = document.getElementById("cuerpoCarrito0");
+    let cuerpoCarrito1 = document.getElementById("cuerpoCarrito1");
+    let totalCarrito0 = document.getElementById("totalCarrito0");
+    cuerpoCarrito0.innerHTML = "No hay productos en el carrito";
+    cuerpoCarrito1.classList.add("ocultar");
+    totalCarrito0.innerHTML = "";
+}
