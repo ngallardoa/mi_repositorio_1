@@ -193,16 +193,24 @@ function carritoSumar(e) {
 function carritoRestar(e) {
     let idProducto1 = e.target.id;
     if (carrito[encontrarProductoEnCarrito(idProducto1)].cantidad == 1) {
-        carrito.splice([encontrarProductoEnCarrito()],1);
-        swal("Producto eliminado");
+        carrito.splice([encontrarProductoEnCarrito(idProducto1)],1);
+        calcularTotal(carrito);
+        calcularSubtotal(carrito);
+        calcularTotal(carrito);
+        imprimirEnCarrito();
+        swal("Carrito","Producto eliminado","success");
+        if (carrito.length == 0) {
+            calcularTotal(carrito);
+            imprimirEnCarrito();
+            limpiarModalCarrito();
+        }
     }
     else {
         carrito[encontrarProductoEnCarrito(idProducto1)].cantidad --;
+        calcularSubtotal(carrito);
+        calcularTotal(carrito);
+        imprimirEnCarrito();
     }
-    calcularSubtotal(carrito);
-    calcularTotal(carrito);
-    imprimirEnCarrito(); 
-    swal("Hecho");
 }
 
 function carritoBorrar(e) {
