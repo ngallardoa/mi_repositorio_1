@@ -1,9 +1,10 @@
-//Este .js aplica sobre la página NuestrosProductos.html, sobre los botones "Crear cuenta" e "Iniciar sesión" y sobre los productos que figuran en la página
+//Este .js aplica sobre la página NuestrosProductos.html, sobre los botones "Crear cuenta" e "Iniciar sesión" (y sus modales asociados), sobre los productos que figuran en la página y sobre el modal del carrito (asociado al botón con el ícono del carrito)
 
 /* Variables */
 
 let crearCuenta0 = document.getElementById("crearCuenta0");
 let iniciarSesión0 = document.getElementById("iniciarSesión0");
+let iniciarCompra0 = document.getElementById("iniciarCompra0");
 let productoEncontrado;
 let posiciónProducto1;
 let posiciónProducto2;
@@ -26,7 +27,6 @@ const agregarACarritoInputArray = [document.getElementById("panesDeHamburguesa")
 let carritoSumarArray = [];
 let carritoRestarArray = [];
 let carritoBorrarArray = [];
-let iniciarCompra0 = document.getElementById("iniciarCompra0");
 
 // Eventos
 
@@ -37,13 +37,13 @@ eventos(agregarACarritoInputArray,agregarACarrito0,"submit");
 
 /* Funciones */
 
-function eventos(array,función,evento) {
+function eventos(array,función,evento) { /*Crea eventos en base a un array con los document.getElementByIds y el tipo de evento con el que se lo desee relacionar*/
     for (i = 0; i < array.length; i ++) {
         array[i].addEventListener(`${evento}`,función);
     }
 }
 
-function agregarACarrito0(e) {
+function agregarACarrito0(e) { /*Agrega los productos seleccionados por el usuario al array carrito*/
     e.preventDefault();
     agregarProducto0 = e.target;
     idProducto0 = e.target.id;
@@ -73,7 +73,7 @@ function agregarACarrito0(e) {
     imprimirEnCarrito();
 }
 
-function formularioCrearCuenta0(e) {
+function formularioCrearCuenta0(e) { /*Modifica el DOM para mostrar los datos del usuario creado*/
     e.preventDefault();
     let crearCuenta1 = document.getElementById("crearCuenta1");
     let sesiónBotón = document.getElementById("sesiónBotón");
@@ -89,7 +89,7 @@ function formularioCrearCuenta0(e) {
     `;
 }
 
-function formularioIniciarSesión0(e) {
+function formularioIniciarSesión0(e) { /*Modifica el DOM para mostrar los datos del usuario que inició sesión*/
     e.preventDefault();
     let iniciarSesión1 = document.getElementById("iniciarSesión1");
     let sesiónBotón = document.getElementById("sesiónBotón");
@@ -105,7 +105,7 @@ function formularioIniciarSesión0(e) {
     `;
 }
 
-function imprimirEnCarrito() {
+function imprimirEnCarrito() { /*Inserta el HTML de los productos que están en el carrito, en el modal carrito*/
     let cuerpoCarrito0 = document.getElementById("cuerpoCarrito0");
     let cuerpoCarrito1 = document.getElementById("cuerpoCarrito1");
     let totalCarrito0 = document.getElementById("totalCarrito0");
@@ -162,7 +162,7 @@ function imprimirEnCarrito() {
     eventos(carritoBorrarArray,carritoBorrar,"click");
 }
 
-function calcularSubtotal(array) {
+function calcularSubtotal(array) { /*Calcula el precio x cantidad de cada artículo que está en el array carrito*/
     let subtotalCarrito = [];
     for (i = 0; i < array.length; i ++) {
         subtotalCarrito.push({
@@ -173,7 +173,7 @@ function calcularSubtotal(array) {
     return subtotalCarrito;
 }
 
-function calcularTotal(array) {
+function calcularTotal(array) { /*Suma todos los subtotales de cada artículo que está en el array carrito*/
     totalCarrito = 0;
     for (i = 0; i < array.length; i ++) {
         totalCarrito += parseInt(array[i].total);
@@ -181,7 +181,7 @@ function calcularTotal(array) {
     return totalCarrito;
 }
 
-function carritoSumar(e) {
+function carritoSumar(e) { /*Al presionar el botón "+" en el modal carrito, agrega una unidad al array carrito del artículo en cuestión y modifica el HTML en base a esto*/
     idProducto1 = e.target.id;
     carrito[encontrarProductoEnCarrito(idProducto1)].cantidad ++;
     calcularSubtotal(carrito);
@@ -190,11 +190,10 @@ function carritoSumar(e) {
     swal("Hecho");
 }
 
-function carritoRestar(e) {
+function carritoRestar(e) { /*Al presionar el botón "-" en el modal carrito, resta una unidad al array carrito del artículo en cuestión y modifica el HTML en base a esto*/
     idProducto1 = e.target.id;
     if (carrito[encontrarProductoEnCarrito(idProducto1)].cantidad == 1) {
-        carrito.splice([encontrarProductoEnCarrito()],1);
-        swal("Producto eliminado");
+        carritoBorrar(e);
     }
     else {
         carrito[encontrarProductoEnCarrito(idProducto1)].cantidad --;
@@ -205,7 +204,7 @@ function carritoRestar(e) {
     swal("Hecho");
 }
 
-function carritoBorrar(e) {
+function carritoBorrar(e) { /*Al presionar el botón del tacho de basura en el modal carrito, elimina del array carrito el artículo en cuestión y modifica el HTML en base a esto*/
     idProducto1 = e.target.id;
     carrito.splice([encontrarProductoEnCarrito(idProducto1)],1);
     calcularSubtotal(carrito);
@@ -214,7 +213,7 @@ function carritoBorrar(e) {
     swal("Hecho");
 }
 
-function crearGetElementByIdCarrito() {
+function crearGetElementByIdCarrito() { /*Por cada artículo que se agrega al array carrito, genera tres document.getElementById (uno para cada botón del modal del carrito)*/
     carritoSumarArray = [];
     carritoRestarArray = [];
     carritoBorrarArray = [];
@@ -231,13 +230,13 @@ function indexOfMásUno(string,elemento) {
     return index;
 }
 
-function encontrarProductoEnCarrito(string) {
+function encontrarProductoEnCarrito(string) { /*Devuelve el número de índice del producto en cuestión en el array carrito*/
     let idProducto1id = string.substring(indexOfMásUno(string,"-"));
     let ProductoEncontradoEnCarrito = carrito.findIndex(nombreProducto => nombreProducto.id1 == idProducto1id);
     return ProductoEncontradoEnCarrito;
 }
 
-function iniciarCompra(e) {
+function iniciarCompra(e) { /*Envía al storage el array carrito*/
     e.preventDefault();
     let carritoJSON = JSON.stringify(carrito);
     localStorage.setItem("Detalle comprado",carritoJSON);
@@ -248,7 +247,7 @@ function iniciarCompra(e) {
     swal("Procesado!");
 }
 
-function limpiarModalCarrito() {
+function limpiarModalCarrito() { /*Borra el HTML del modal carrito*/
     let cuerpoCarrito0 = document.getElementById("cuerpoCarrito0");
     let cuerpoCarrito1 = document.getElementById("cuerpoCarrito1");
     let totalCarrito0 = document.getElementById("totalCarrito0");
