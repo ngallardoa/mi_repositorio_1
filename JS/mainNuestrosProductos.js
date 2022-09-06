@@ -1,15 +1,17 @@
-//Este .js aplica sobre la página NuestrosProductos.html, sobre los botones "Crear cuenta" e "Iniciar sesión" y sobre los productos que figuran en la página
+//Este .js aplica sobre la página NuestrosProductos.html, sobre los botones "Crear cuenta" e "Iniciar sesión" (y sus modales asociados), sobre los productos que figuran en la página y sobre el modal del carrito (asociado al botón con el ícono del carrito)
 
 /* Variables */
 
 let crearCuenta0 = document.getElementById("crearCuenta0");
 let iniciarSesión0 = document.getElementById("iniciarSesión0");
-// let productoEncontrado; /*Eliminar*/ 
-// let posiciónProducto1; /*Eliminar*/
-// let posiciónProducto2; /*Eliminar*/
-// let agregarProducto0; /*Eliminar*/
-// let idProducto0; /*Eliminar*/
-// let idProducto1; /*Eliminar*/
+let iniciarCompra0 = document.getElementById("iniciarCompra0");
+let productoEncontrado;
+let posiciónProducto1;
+let posiciónProducto2;
+let agregarProducto0;
+let agregarProducto1;
+let idProducto0;
+let idProducto1;
 let totalCarrito;
 let carrito = [];
 const productos = [{nombre: "Pan de hamburguesas", precio: 500, descripción: "Pan para hamburguesas. Viene por medio kg", cantidad: 0, categoría: "panadería", id1: "panesDeHamburguesa"},
@@ -25,7 +27,6 @@ const agregarACarritoInputArray = [document.getElementById("panesDeHamburguesa")
 let carritoSumarArray = [];
 let carritoRestarArray = [];
 let carritoBorrarArray = [];
-let iniciarCompra0 = document.getElementById("iniciarCompra0");
 
 // Eventos
 
@@ -36,13 +37,13 @@ eventos(agregarACarritoInputArray,agregarACarrito0,"submit");
 
 /* Funciones */
 
-function eventos(array,función,evento) {
+function eventos(array,función,evento) { /*Crea eventos en base a un array con los document.getElementByIds y el tipo de evento con el que se lo desee relacionar*/
     for (i = 0; i < array.length; i ++) {
         array[i].addEventListener(`${evento}`,función);
     }
 }
 
-function agregarACarrito0(e) {
+function agregarACarrito0(e) { /*Agrega los productos seleccionados por el usuario al array carrito*/
     e.preventDefault();
     let agregarProducto0 = e.target;
     let idProducto0 = e.target.id;
@@ -72,7 +73,7 @@ function agregarACarrito0(e) {
     imprimirEnCarrito();
 }
 
-function formularioCrearCuenta0(e) {
+function formularioCrearCuenta0(e) { /*Modifica el DOM para mostrar los datos del usuario creado*/
     e.preventDefault();
     let crearCuenta1 = document.getElementById("crearCuenta1");
     let sesiónBotón = document.getElementById("sesiónBotón");
@@ -88,7 +89,7 @@ function formularioCrearCuenta0(e) {
     `;
 }
 
-function formularioIniciarSesión0(e) {
+function formularioIniciarSesión0(e) { /*Modifica el DOM para mostrar los datos del usuario que inició sesión*/
     e.preventDefault();
     let iniciarSesión1 = document.getElementById("iniciarSesión1");
     let sesiónBotón = document.getElementById("sesiónBotón");
@@ -104,7 +105,7 @@ function formularioIniciarSesión0(e) {
     `;
 }
 
-function imprimirEnCarrito() {
+function imprimirEnCarrito() { /*Inserta el HTML de los productos que están en el carrito, en el modal carrito*/
     let cuerpoCarrito0 = document.getElementById("cuerpoCarrito0");
     let cuerpoCarrito1 = document.getElementById("cuerpoCarrito1");
     let totalCarrito0 = document.getElementById("totalCarrito0");
@@ -161,7 +162,7 @@ function imprimirEnCarrito() {
     eventos(carritoBorrarArray,carritoBorrar,"click");
 }
 
-function calcularSubtotal(array) {
+function calcularSubtotal(array) { /*Calcula el precio x cantidad de cada artículo que está en el array carrito*/
     let subtotalCarrito = [];
     for (i = 0; i < array.length; i ++) {
         subtotalCarrito.push({
@@ -172,7 +173,7 @@ function calcularSubtotal(array) {
     return subtotalCarrito;
 }
 
-function calcularTotal(array) {
+function calcularTotal(array) { /*Suma todos los subtotales de cada artículo que está en el array carrito*/
     totalCarrito = 0;
     for (i = 0; i < array.length; i ++) {
         totalCarrito += parseInt(array[i].total);
@@ -180,33 +181,18 @@ function calcularTotal(array) {
     return totalCarrito;
 }
 
-function limpiarModalCarrito() {
-    let cuerpoCarrito0 = document.getElementById("cuerpoCarrito0");
-    let cuerpoCarrito1 = document.getElementById("cuerpoCarrito1");
-    let totalCarrito0 = document.getElementById("totalCarrito0");
-    cuerpoCarrito0.innerHTML = "No hay productos en el carrito";
-    cuerpoCarrito1.classList.add("ocultar");
-    totalCarrito0.innerHTML = "";
-}
-
-function carritoSumar(e) {
-    let idProducto1 = e.target.id;
+function carritoSumar(e) { /*Al presionar el botón "+" en el modal carrito, agrega una unidad al array carrito del artículo en cuestión y modifica el HTML en base a esto*/
+    idProducto1 = e.target.id;
     carrito[encontrarProductoEnCarrito(idProducto1)].cantidad ++;
     calcularSubtotal(carrito);
     calcularTotal(carrito);
     imprimirEnCarrito();
 }
 
-function carritoRestar(e) {
-    let idProducto1 = e.target.id;
+function carritoRestar(e) { /*Al presionar el botón "-" en el modal carrito, resta una unidad al array carrito del artículo en cuestión y modifica el HTML en base a esto*/
+    idProducto1 = e.target.id;
     if (carrito[encontrarProductoEnCarrito(idProducto1)].cantidad == 1) {
-        carrito.splice([encontrarProductoEnCarrito(idProducto1)],1);
-        swal("Carrito","Producto eliminado","success");
-        if (carrito.length == 0) {
-            calcularTotal(carrito);
-            imprimirEnCarrito();
-            limpiarModalCarrito();
-        }
+        carritoBorrar(e);
     }
     else {
         carrito[encontrarProductoEnCarrito(idProducto1)].cantidad --;
@@ -216,8 +202,8 @@ function carritoRestar(e) {
     }
 }
 
-function carritoBorrar(e) {
-    let idProducto1 = e.target.id;
+function carritoBorrar(e) { /*Al presionar el botón del tacho de basura en el modal carrito, elimina del array carrito el artículo en cuestión y modifica el HTML en base a esto*/
+    idProducto1 = e.target.id;
     carrito.splice([encontrarProductoEnCarrito(idProducto1)],1);
     calcularSubtotal(carrito);
     calcularTotal(carrito);
@@ -225,7 +211,7 @@ function carritoBorrar(e) {
     swal("Carrito","Producto eliminado","success");
 }
 
-function crearGetElementByIdCarrito() {
+function crearGetElementByIdCarrito() { /*Por cada artículo que se agrega al array carrito, genera tres document.getElementById (uno para cada botón del modal del carrito)*/
     carritoSumarArray = [];
     carritoRestarArray = [];
     carritoBorrarArray = [];
@@ -242,13 +228,13 @@ function indexOfMásUno(string,elemento) {
     return index;
 }
 
-function encontrarProductoEnCarrito(string) {
+function encontrarProductoEnCarrito(string) { /*Devuelve el número de índice del producto en cuestión en el array carrito*/
     let idProducto1id = string.substring(indexOfMásUno(string,"-"));
     let productoEncontradoEnCarrito = carrito.findIndex(nombreProducto => nombreProducto.id1 == idProducto1id);
     return productoEncontradoEnCarrito;
 }
 
-function iniciarCompra(e) {
+function iniciarCompra(e) { /*Envía al storage el array carrito*/
     e.preventDefault();
     let carritoJSON = JSON.stringify(carrito);
     localStorage.setItem("Detalle comprado",carritoJSON);
@@ -259,3 +245,11 @@ function iniciarCompra(e) {
     swal("Procesado!");
 }
 
+function limpiarModalCarrito() { /*Borra el HTML del modal carrito*/
+    let cuerpoCarrito0 = document.getElementById("cuerpoCarrito0");
+    let cuerpoCarrito1 = document.getElementById("cuerpoCarrito1");
+    let totalCarrito0 = document.getElementById("totalCarrito0");
+    cuerpoCarrito0.innerHTML = "No hay productos en el carrito";
+    cuerpoCarrito1.classList.add("ocultar");
+    totalCarrito0.innerHTML = "";
+}
